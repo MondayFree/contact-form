@@ -6,11 +6,16 @@ import TextBox from "./TextBox";
 import ConfirmStatement from "./ConfirmStatement";
 import SubmitButton from "./SubmitButton";
 import type { FormEvent } from "react";
+import Swal from 'sweetalert2'
 
 type SubmitParam = FormEvent<HTMLFormElement> & {
   target: {
     radio: HTMLInputElement[],
-    confirm: HTMLInputElement
+    confirm: HTMLInputElement,
+    first: HTMLInputElement,
+    last: HTMLInputElement,
+    email: HTMLInputElement,
+    textBox: HTMLInputElement,
   }
 }
 
@@ -36,8 +41,27 @@ const Card = () => {
     if(!event.target.confirm.checked) setConfirmStatus(true);
 
     if(!(firstNameStatus || lastNameStatus || emailStatus || radioStatus || textBoxStatus || confirmStatus) && firstName.trim() && lastName.trim() && (email.trim() && (/^[^@].*@.*[^@]$/).test(email.trim())) && (event.target.radio[0].checked || event.target.radio[1].checked) && textBox.trim() && event.target.confirm.checked) {
-      alert('success');
-      // alert and reset form
+      const form = event.target;
+      form.first.value = "";
+      form.last.value = "";
+      form.email.value = "";
+      form.radio[0].checked = false;
+      form.radio[1].checked = false;
+      form.textBox.value = "";
+      form.confirm.checked = false;
+
+      Swal.fire({
+        title: 'Message Sent!',
+        text: "Thanks for completing the form. We'll in touch soon!",
+        icon: 'success',
+        confirmButtonText: 'Close',
+        showConfirmButton: false
+      });
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setTextBox("");
     }
   };
 
