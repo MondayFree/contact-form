@@ -10,6 +10,6 @@
   }
 
   html, body {
-    @apply bg-primary-green-light text-[15px] font-karla;
+    @apply bg-primary-green-light text-[15px] font-karla text-neutral-grey-darker;
   }
 }

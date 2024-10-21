@@ -17,7 +17,10 @@ export default {
       },
       fontFamily: {
         karla: "Karla"
-      }
+      },
+      screens: {
+        'h-lg': { 'raw': '(min-height: 770px)' }
+      },
     },
   },
   plugins: [],
