@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  @font-face {
+    font-family: 'Karla';
+    src: url('/font/Karla-Regular.ttf') format('truetype')
+  }
+
+  html, body {
+    @apply bg-primary-green-light text-[15px] font-karla text-neutral-grey-darker;
+  }
+}
